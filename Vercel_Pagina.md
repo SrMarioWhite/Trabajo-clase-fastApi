@@ -1,2 +1,2 @@
 # Trabajo_clase
-https://trabajo-clase-xi.vercel.app/
+https://trabajo-clase-fast-api.vercel.app/
