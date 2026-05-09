@@ -1,13 +1,16 @@
+import os
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+base_dir = os.path.dirname(os.path.realpath(__file__))
+static_path = os.path.join(base_dir, "static")
+templates_path = os.path.join(base_dir, "templates")
 
-templates = Jinja2Templates(directory="templates")
-
+app.mount("/static", StaticFiles(directory=static_path), name="static")
+templates = Jinja2Templates(directory=templates_path)
 
 @app.get("/index")
 async def index(request: Request):
